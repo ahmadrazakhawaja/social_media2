@@ -1,0 +1,61 @@
+{% extends "network/layout.html" %}
+
+{% block body %}
+    <h1>Posts of followers</h1>
+    {% for post in posts %}
+    <div class="post">
+        {% for name in names %}
+        {% ifequal post.User_id name.id  %}
+        <a href="{% url 'profile' id=name.id %}" class="username">{{ name.username }}</a>
+        {% endifequal %}
+        {% endfor %}
+        <label class="time">{{ post.timestamp }}</label>
+        <label class="content">{{ post.content }}</label>
+        {% if post.post_image %}
+        <img id="image" src="{{ post.post_image.url }}"/>
+        {% endif %}
+        <hr>
+        <div class="like2">
+            <a id="like2">likes:</a>
+            <label class="likes">{{ post.likes }}</label>
+        </div>
+        {% if user.is_authenticated %}
+        <div class="buttonsx">
+        {% for like in likes %}
+        {% ifequal like.post_id post.id %}
+        <button class="like btn btn-primary btn-sm">Unlike</button>
+        {% endifequal %}
+        {% endfor %}
+        <button class="like btn btn-primary btn-sm">Like</button>
+        {% endif %}
+        <form id="idm">
+        <input type="hidden"  class="submitmv" value="{{post.id}}">
+        </form>
+        </div>
+    </div>
+    {% empty %}
+    <a class="pagination">No Followers at the moment</a>
+    {% endfor %}
+
+    <div class="pagination">
+        <span class="step-links">
+            {% if posts.has_previous %}
+                <a href="?page=1" class="btn-primary btn-sm">&laquo; first</a>
+                <a href="?page={{ posts.previous_page_number }}" class="btn-primary btn-sm">previous</a>
+            {% endif %}
+    
+            <span class="current">
+                Page {{ posts.number }} of {{ posts.paginator.num_pages }}.
+            </span>
+    
+            {% if posts.has_next %}
+                <a href="?page={{ posts.next_page_number }}" class="btn-primary btn-sm">next</a>
+                <a href="?page={{ posts.paginator.num_pages }}" class="btn-primary btn-sm">last &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+
+
+
+
+{% endblock %}

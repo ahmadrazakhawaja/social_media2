@@ -1,0 +1,219 @@
+html,body {
+    height: 100%;
+  }
+  body{
+    background-color: #e9ebee;
+  }
+
+#New{
+    margin:0 auto;
+    display: block;
+    width: 50%;
+    background-color: lightcyan;
+    border-radius: 1%;
+    overflow:auto;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1);
+    margin-bottom: 2%;
+    margin-top: 2%;
+}
+
+#ta,.tx{
+    width: 95%;
+    outline: none;
+    border:none;
+    box-shadow: 0px 2px 4px 2px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1);
+    margin: 0;
+    margin-top: 3%;
+    margin-bottom: 5%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto; 
+    border-radius: 2%;
+}
+
+#ta:hover,.tx:hover{
+    box-shadow: 0 1px 6px rgba(31, 32, 36, 0.28);
+    border: 1px solid #dfe1e5;
+    border-color: rgba(223,225,229,0);
+   
+}
+
+
+#a{
+    text-align: center;
+}
+
+.submit-c{
+    text-align: center;
+    margin-top: 4%;
+    margin-bottom: 2%;
+}
+
+#submitc{
+    margin-top: 4%;
+    margin-bottom: 1%;
+}
+
+.imagey{
+    text-align: center;
+}
+
+#upload_image{
+    margin-right: 1%;
+}
+
+
+h3{
+    text-align: center;
+}
+
+
+.post{
+    border-radius: 1%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .1), 0 8px 16px rgba(0, 0, 0, .1);
+    margin-top: 10px;
+    padding: 10px;
+    font-family: sans-serif;
+    width: 50%;
+    text-align: center;
+    background-color: white;
+    margin:0 auto;
+    margin-bottom: 2%;
+    margin-top: 2%;
+}
+
+.post:hover,#New:hover{
+    box-shadow: 0 1px 6px rgba(31, 32, 36, 0.28);
+    border: 1px solid #dfe1e5;
+    border-color: rgba(223,225,229,0);
+}
+
+.post .username{
+    display: block;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.post .time{
+display: block;
+font-size: 10px;
+color: gray;
+}
+
+.post .content{
+    display: block;
+    font-size: 15px;
+    text-align: justify;
+    margin-left: 2%;
+    margin-right: 2%;
+}
+
+.like2{
+    text-align: justify;
+    margin-left: 2%;
+}
+
+
+
+#hkj{
+    font-size: 20px;
+    margin: 5px;
+}
+
+
+#user_image{
+    display: block;
+    margin: 0 auto;
+    height: 300px;
+    width: auto;
+  border-radius: 5%;
+}
+
+
+#user_image2{
+    display: block;
+    margin: 0 auto;
+    height: 300px;
+    width: auto;
+  border-radius: 5%;
+}
+
+
+.change_profile_pic{
+    text-align: center;
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+#description{
+    text-align:center;
+}
+
+#description_div{
+    margin:0 auto;
+    width: 50%;
+}
+
+#edit_description{
+    display: block;
+    margin:0 auto;
+}
+
+#followers,#followersx,#following,#followingx{
+    text-align: center;
+    display: block;
+}
+
+.buttonsx{
+    display: flex;
+}
+.like, .edit{
+    margin: 1%;
+}
+
+
+.submitxc,.submitv{
+    margin: 2%;
+}
+
+
+
+#image{
+    display: block;
+    margin: 0 auto;
+    height: 300px; 
+    width: auto;
+    border-radius: 5%;
+    margin-top: 3%;
+}
+
+
+.pagination{
+    display: block;
+    text-align: center;
+    margin-bottom: 2%;
+    margin-bottom: 2%;
+}
+
+.dy{
+    margin-top: 3%;
+}
+
+hr {
+    margin-top: 4rem;
+    margin-bottom: 0.5rem;
+}
+
+
+h1 {
+    text-align: center;
+    margin-bottom: 5%;
+}
+
+#fkx{
+    display: block;
+    margin: 0 auto;
+    margin-top: 2%;
+    margin-bottom: 2%;
+
+    }

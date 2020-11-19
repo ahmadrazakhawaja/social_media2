@@ -1,0 +1,37 @@
+{% extends "network/layout.html" %}
+
+{% block body %}
+    <h1>followers</h1>
+    {% for post in posts %}
+    <div class="post">
+        <a href="{% url 'profile' id=post.id %}" class="username">{{ post.username }}</a>
+        {% if post.user_image %}
+        <img id="image" src="{{ post.user_image.url }}" style="width: 10%; display: block; margin-right: 10px;" />
+        {% endif %}
+    </div>
+    {% empty %}
+    No Followers at the moment
+    {% endfor %}
+
+    <div class="pagination">
+        <span class="step-links">
+            {% if posts.has_previous %}
+                <a href="?page=1">&laquo; first</a>
+                <a href="?page={{ posts.previous_page_number }}">previous</a>
+            {% endif %}
+    
+            <span class="current">
+                Page {{ posts.number }} of {{ posts.paginator.num_pages }}.
+            </span>
+    
+            {% if posts.has_next %}
+                <a href="?page={{ posts.next_page_number }}">next</a>
+                <a href="?page={{ posts.paginator.num_pages }}">last &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+
+
+
+
+{% endblock %}

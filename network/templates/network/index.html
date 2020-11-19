@@ -1,0 +1,106 @@
+{% extends "network/layout.html" %}
+
+{% block body %}
+    {% if user.is_authenticated %}
+    <div id="New">
+    <h3>New Post</h3>
+    <form id="newpost" action="{% url 'index' %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <textarea id="ta" cols="100" rows="5" placeholder="write new post" name="content"></textarea>
+        <div class="imagey">
+            <a id="upload_image">upload Image:</a>
+            <input type="file" id="myFile" name="post_image" accept="image/*" id="id_post_image">
+        </div>
+        <div class="submit-c">
+        <input type="submit" class="btn btn-primary" id="submitc" value="Post">
+    </div>
+   
+    </form>
+</div>
+<h3>Posts</h3>
+{% endif %}
+    {% for post in posts %}
+    <div class="post">
+        <div class="nk">
+        {% for name in names %}
+        {% ifequal post.User_id name.id  %}
+        <a href="{% url 'profile' id=name.id %}" class="username">{{ name.username }}</a>
+        {% endifequal %}
+        {% endfor %}
+        <label class="time">{{ post.timestamp }}</label>
+        <label class="content">{{ post.content }}</label>
+        {% if post.post_image %}
+        <img id="image" src="{{ post.post_image.url }}" />
+        {% endif %}
+        <hr>
+        <div class="like2">
+        <a id="like2">likes:</a>
+        <label class="likes">{{ post.likes }}</label>
+        </div>
+        {% if user.is_authenticated %}
+        <div class="buttonsx">
+        {% for like in likes %}
+        {% ifequal like.post_id post.id %}
+        
+        <button class="like btn btn-primary btn-sm">Unlike</button>
+        {% endifequal %}
+        {% endfor %}
+        <button class="like btn btn-primary btn-sm">Like</button>
+        {% endif %}
+        <form id="idm">
+        <input type="hidden"  class="submitmv" value="{{post.id}}">
+        </form>
+        
+        {% if user.is_authenticated %}
+        {% ifequal post.User_id user.id %}
+        {% else %}
+         </div>
+        {% endifequal %}
+        {% ifequal post.User_id user.id %}
+        <button class="edit btn btn-primary btn-sm">Edit</button>
+    </div>
+</div>
+        <div class="Newx">
+            <form class="newpost" enctype="multipart/form-data">
+                {% csrf_token %}
+                <textarea class="tx" cols="100" rows="5" placeholder="Edit your Post" name="content">{{ post.content }}</textarea>
+                <input type="file" id="myFile" name="post_image2" accept="image/*">
+                <input type="submit"  class="submitxc btn btn-primary" value="Save">
+                <input type="submit"  class="submitv btn btn-primary" value="Cancel">
+                <input type="hidden"  class="submitxv btn btn-primary" value="{{post.id}}">
+            </form>
+        </div>
+        {% else %}
+    </div>
+        </div>
+        {% endifequal %}
+        {% else %}
+    </div>
+    {% endif %}
+    </div>
+    {% empty %}
+    <a class="pagination">No Posts at the moment</a>
+    {% endfor %}
+
+    <div class="pagination">
+        <span class="step-links">
+            {% if posts.has_previous %}
+                <a href="?page=1" class="btn-primary btn-sm">&laquo; first</a>
+                <a href="?page={{ posts.previous_page_number }}" class="btn-primary btn-sm">previous</a>
+            {% endif %}
+    
+            <span class="current">
+                Page {{ posts.number }} of {{ posts.paginator.num_pages }}.
+            </span>
+    
+            {% if posts.has_next %}
+                <a href="?page={{ posts.next_page_number }}" class="btn-primary btn-sm">next</a>
+                <a href="?page={{ posts.paginator.num_pages }}" class="btn-primary btn-sm">last &raquo;</a>
+            {% endif %}
+        </span>
+    </div>
+
+
+
+
+{% endblock %}
